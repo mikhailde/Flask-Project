@@ -1,9 +1,9 @@
+from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
-from app import app, db, login_manager
+from app import app, db
 from app.models import User
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, ChangePasswordForm
-from datetime import datetime
 
 current_year = datetime.now().year
 
