@@ -1,0 +1,23 @@
+# Virtual environment
+venv/
+
+# Compiled Python files
+__pycache__/
+
+# Instance folder (used for storing instance-specific configuration)
+instance/
+
+# Database file
+your_database.db
+
+# Migrations folder
+migrations/
+
+# IDE-specific files and directories
+.idea/
+.vscode/
+
+# Compiled Python files should not be checked into version control
+*.pyc
+*.pyo
+__pycache__/
