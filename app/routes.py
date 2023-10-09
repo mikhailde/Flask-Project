@@ -1,9 +1,12 @@
 from datetime import datetime
+from flask_mail import Mail, Message
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, current_user, login_required
 from app import app, db
 from app.models import User
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, ChangePasswordForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, ChangePasswordForm, ContactForm
+
+mail = Mail(app)
 
 current_year = datetime.now().year
 
@@ -16,9 +19,18 @@ def index():
 def about():
     return render_template('about.html', title='About Us', current_year=current_year)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html', title='Contact Us', current_year=current_year)
+    form = ContactForm()
+    if form.validate_on_submit():
+        # Отправка почты
+        msg = Message('Обратная связь - EventHub', sender=app.config['MAIL_USERNAME'], recipients=[form.email.data])
+        msg.body = f'Имя: {form.name.data}\nEmail: {form.email.data}\nСообщение: {form.message.data}'
+        mail.send(msg)
+        
+        flash('Ваше сообщение отправлено успешно!', 'info')
+        return redirect(url_for('contact'))
+    return render_template('contact.html', title='Contact Us', form=form, current_year=current_year)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
