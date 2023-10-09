@@ -1,0 +1,183 @@
+/* Общие стили для всего сайта */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+main {
+    margin: 20px;
+}
+
+/* Стили для контента на страницах */
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Дополнительные стили для главной страницы */
+
+.event-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.event {
+    width: 30%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.event img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.event h2 {
+    margin-top: 10px;
+}
+
+.event p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.event a {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.event a:hover {
+    background-color: #555;
+}
+
+/* Дополнения к стилям для личного кабинета пользователя */
+.content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.content ul li {
+    margin-bottom: 10px;
+}
+
+/* Стили для кнопки "Выйти" */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* Стили для кнопки входа */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Дополнительные стили для формы входа */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-check-label {
+    font-weight: normal;
+}
+
+/* Дополнительные стили для формы регистрации */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-control-label {
+    font-weight: bold;
+}
+
+/* Стили для Bootstrap Carousel */
+.carousel {
+    max-width: 500px;
+    margin-top: 20px;
+    margin: 0 auto;
+}
+
+.carousel-inner {
+    max-width: 100%;
+}
+
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}

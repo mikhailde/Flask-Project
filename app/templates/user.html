@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет - EventHub{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Добро пожаловать, {{ user.username }}!</h1>
+    <p>Информация о вашем аккаунте:</p>
+    <ul>
+        <li><strong>Имя:</strong> {{ user.username }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+    </ul>
+    <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">Редактировать профиль</a>
+    <a href="{{ url_for('change_password') }}" class="btn btn-primary">Изменить пароль</a>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!-- app/templates/login.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Вход в аккаунт - EventHub{% endblock %}
+
+{% block content %}
+<h1>Вход в аккаунт</h1>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.username.label(class="control-label") }}
+        {{ form.username(class="form-control", placeholder="Введите имя пользователя", autofocus=true) }}
+    </div>
+    <div class="form-group">
+        {{ form.password.label(class="control-label") }}
+        {{ form.password(class="form-control", placeholder="Введите пароль") }}
+    </div>
+    <div class="form-group">
+        <label class="form-check-label">
+            {{ form.remember_me }} Запомнить меня
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+{% endblock %}
