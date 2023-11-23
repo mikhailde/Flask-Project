@@ -1,0 +1,18 @@
+<!-- Модальное окно удаления -->
+<div class="modal fade" id="deleteModal{{ event.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ event.id }}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel{{ event.id }}">Удалить мероприятие: {{ event.title }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Форма удаления мероприятия -->
+                <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
+                    <p>Вы уверены, что хотите удалить мероприятие "{{ event.title }}"?</p>
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

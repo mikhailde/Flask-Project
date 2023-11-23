@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактировать мероприятие - EventHub{% endblock %}
+
+{% block content %}
+    <h1>Редактировать мероприятие</h1>
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.title.label }}
+            {{ form.title(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label }}
+            {{ form.description(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.date_time.label }}
+            {{ form.date_time(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.location.label }}
+            {{ form.location(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.photo.label }}
+            {{ form.photo(class="form-control") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Обновить мероприятие</button>
+    </form>
+{% endblock %}
