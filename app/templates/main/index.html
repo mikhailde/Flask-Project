@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Главная - EventHub{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Добро пожаловать на EventHub!</h1>
+            <p class="hero-subtitle">Мы создаем уникальные мероприятия для вас</p>
+        </div>
+    </section>
+
+    <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-inner">
+            {% for i in range(0, events|length, 3) %}
+                <div class="carousel-item {% if i == 0 %}active{% endif %}">
+                    <div class="d-flex justify-content-around">
+                        {% for event in events[i:i+3] %}
+                            <div class="event">
+                                <img src="{{ url_for('static', filename='uploads/' + event.photo_filename) }}"
+                                     class="d-block w-100" alt="{{ event.title }}">
+                                <h5>{{ event.title }}</h5>
+                                <p>{{ event.description }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <script>
+        let myCarousel = document.querySelector('#carouselExampleCaptions');
+        let carousel = new bootstrap.Carousel(myCarousel, {
+            interval: 2000,
+            wrap: true,
+            pause: 'hover'
+        });
+    </script>
+
+    <section class="info-section mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>О нас</h2>
+                    <p>EventHub - это платформа, где мы создаем и организуем уникальные мероприятия для вас. Мы
+                        посвящены
+                        тому, чтобы сделать каждое ваше событие особенным и незабываемым.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Наши мероприятия</h2>
+                    <p>Проводим широкий спектр событий: от концертов и фестивалей до бизнес-семинаров и спортивных
+                        мероприятий. Мы стремимся удовлетворить интересы каждого участника и создать яркие воспоминания.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Свяжитесь с нами</h2>
+                    <p>Если у вас есть вопросы, предложения или вы хотите участвовать в наших мероприятиях, не стесняйтесь
+                        связаться с нами. Мы всегда открыты для общения.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h2>Контактная информация</h2>
+                    <p>Email: info@eventhub.com</p>
+                    <p>Телефон: +1 123 456 7890</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

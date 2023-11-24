@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}О компании - EventHub{% endblock %}
+
+{% block content %}
+    <section class="about-section">
+        <h1 class="text-center mb-4">Добро пожаловать в мир EventHub!</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="О нас" class="img-fluid rounded">
+            </div>
+            <div class="col-md-6">
+                <p class="lead">Мы - команда профессионалов, страстно любящих мероприятия. Наша цель - создать
+                    незабываемые впечатления и подарить удовольствие от каждого момента.</p>
+                <p>EventHub был основан с любовью к организации мероприятий любого масштаба. Мы предлагаем широкий спектр
+                    услуг - от уютных вечеринок до крупных корпоративных мероприятий.</p>
+                <p>Вдохновляйтесь идеями, просматривайте наш каталог, присоединяйтесь к нам на наших мероприятиях и
+                    создавайте свои уникальные воспоминания с EventHub!</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

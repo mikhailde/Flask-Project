@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Создать мероприятие - EventHub{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Создать мероприятие</h2>
+                <form method="post" action="{{ url_for('create_event') }}" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label for="title">Название мероприятия</label>
+                        {{ form.title(class="form-control", placeholder="Введите название мероприятия") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Описание мероприятия</label>
+                        {{ form.description(class="form-control", placeholder="Введите описание мероприятия") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="date_time">Дата и время проведения</label>
+                        {{ form.date_time(class="form-control", placeholder="Выберите дату и время") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Место проведения</label>
+                        {{ form.location(class="form-control", placeholder="Введите место проведения") }}
+                    </div>
+                    <div class="form-group">
+                        <label for="photo">Фотография</label>
+                        {{ form.photo(class="form-control") }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Создать мероприятие</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
