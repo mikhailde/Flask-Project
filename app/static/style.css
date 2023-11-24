@@ -89,24 +89,23 @@ h1, h2, h3 {
 }
 
 /* Обновленные стили для текста в карточках мероприятий */
-.card-title {
-    font-size: 24px;
-    font-weight: bold;
+.card-title,
+.card-description {
     font-family: 'Roboto', sans-serif;
-    color: #007bff;
+}
+
+.card-title {
     margin-bottom: 10px;
 }
 
 .card-description {
     font-size: 18px;
-    font-family: 'Roboto', sans-serif;
     color: #555;
     margin-bottom: 15px;
 }
 
 .card-buttons .btn {
     font-size: 16px;
-    font-family: 'Roboto', sans-serif;
 }
 
 .card-buttons .btn {
@@ -136,7 +135,6 @@ h1, h2, h3 {
         font-size: 14px;
     }
 }
-
 
 /* Кнопки */
 .btn {
@@ -208,7 +206,7 @@ h1, h2, h3 {
 }
 
 .form-check-label {
-    margin-left: -400px; /* Отступ слева от текста "Запомнить меня" */
+    margin-left: 0;
 }
 
 /* Модальные окна */
@@ -247,7 +245,6 @@ h1, h2, h3 {
     left: 0;
     width: 100%;
     text-align: center;
-    animation: slideIn 0.5s ease-out;
 }
 
 .cookie-banner.hidden {
@@ -278,17 +275,6 @@ h1, h2, h3 {
 .cookie-buttons button:hover {
     opacity: 0.8;
 }
-
-/* Анимация для появления баннера */
-@keyframes slideIn {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
 
 /* Футер */
 footer {
@@ -414,7 +400,6 @@ footer {
     margin-bottom: 20px;
 }
 
-
 /* Дополнительные стили для страницы пользователя */
 .user-section {
     background-color: #f8f9fa;
@@ -488,8 +473,6 @@ footer {
         width: 80%;
     }
 }
-
-
 
 /* Стили для алерт-сообщений */
 .alert-messages {
