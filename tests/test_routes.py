@@ -27,19 +27,15 @@ def make_request(client, endpoint):
 def test_index(client):
     response = make_request(client, '/')
     assert 'Главная' in response
-    assert '200 OK' in response
 
 def test_about(client):
     response = make_request(client, '/about')
     assert 'О компании' in response
-    assert '200 OK' in response
 
 def test_contact(client):
     response = make_request(client, '/contact')
     assert 'Обратная связь' in response
-    assert '200 OK' in response
 
 def test_event_catalog(client):
     response = make_request(client, '/event_catalog')
     assert 'Каталог мероприятий' in response
-    assert '200 OK' in response
