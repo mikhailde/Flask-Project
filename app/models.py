@@ -9,8 +9,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(60), nullable=False)
     registration_date = db.Column(db.DateTime, default=datetime.utcnow)
-    is_admin = db.Column(db.Boolean, default=False)  # Добавляем поле для определения роли админа
-    events_organizing = db.relationship('Event', backref='organizer', lazy=True)
+    is_admin = db.Column(db.Boolean, default=False)
+    events_organizing = db.relationship('Event', backref='organizer', cascade='all, delete-orphan', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
@@ -21,13 +21,14 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+
 class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(255), nullable=False)
+    title = db.Column(db.String(255), nullable=False, index=True)
     description = db.Column(db.Text)
     date_time = db.Column(db.DateTime, nullable=False)
     location = db.Column(db.String(255))
-    organizer_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    organizer_id = db.Column(db.Integer, db.ForeignKey('user.id', ondelete='CASCADE'), nullable=False)
     photo_filename = db.Column(db.String(255))
 
     def __repr__(self):
