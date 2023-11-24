@@ -1,185 +1,159 @@
+/* Базовые стили */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
+    color: #343a40;
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Шапка */
 header {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 15px 0;
+    background-color: #007bff;
+    padding: 10px 0;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+    color: white !important;
+}
+
+nav {
+    text-align: center;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
+    margin: 0;
     padding: 0;
 }
 
-nav ul li {
-    display: inline;
+nav li {
+    display: inline-block;
     margin-right: 20px;
 }
 
-nav ul li a {
+nav a {
     text-decoration: none;
-    color: #ffffff;
+    color: white;
     font-weight: bold;
+    font-size: 16px;
 }
 
+/* Главное содержимое */
 main {
-    margin: 20px;
+    padding: 20px 0;
 }
 
-.content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+h1, h2, h3 {
+    color: #007bff;
 }
 
-/* Дополнительные стили для каталога мероприятий */
-.row-cols-md-3 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
+/* Карточки мероприятий */
 .card {
-    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
 .card:hover {
     transform: scale(1.05);
 }
 
-.card img {
-    max-width: 100%;
-    height: auto;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.card-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.card-text {
-    font-size: 1rem;
-    color: #6c757d;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-}
-
-/* Дополнительные стили для footer */
-footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #343a40;
-    color: #ffffff;
-    border-top: 2px solid #6c757d;
-    border-radius: 10px;
+.card-body {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
     margin-top: 20px;
 }
 
-
-/* Дополнительные стили для главной страницы */
-
-.event-list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.event {
-    width: 30%;
-    padding: 10px;
-    margin: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
     text-align: center;
-    position: relative;
+    color: #007bff;
+    margin-bottom: 30px;
 }
 
-.event img {
+.card img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
+    border-bottom: 1px solid #ddd;
 }
 
-.event h2 {
-    margin-top: 10px;
-}
-
-.event p {
-    margin-top: 10px;
-    font-size: 14px;
-}
-
-.event a, .event button {
-    display: inline-block;
-    margin-top: 10px;
-    margin-right: 10px; /* Добавлено для разделения кнопок */
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 3px;
-    text-decoration: none;
+/* Обновленные стили для текста в карточках мероприятий */
+.card-title {
+    font-size: 24px;
     font-weight: bold;
-}
-
-.event a:hover, .event button:hover {
-    background-color: #555;
-}
-
-/* Дополнения к стилям для личного кабинета пользователя */
-.content ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.content ul li {
+    font-family: 'Roboto', sans-serif;
+    color: #007bff;
     margin-bottom: 10px;
 }
 
-/* Стили для кнопки "Выйти" */
+.card-description {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.card-buttons .btn {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-buttons .btn {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.card-buttons .btn:last-child {
+    margin-right: 0;
+}
+
+/* Медиазапрос для адаптивности карточек */
+@media screen and (max-width: 768px) {
+    .card {
+        margin-bottom: 30px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-description {
+        font-size: 16px;
+    }
+
+    .card-buttons .btn {
+        font-size: 14px;
+    }
+}
+
+
+/* Кнопки */
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    text-align: center;
     text-decoration: none;
-    border-radius: 5px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    border-radius: 5px;
 }
 
-.btn:hover {
-    background-color: #555;
-}
-
-/* Стили для кнопки входа */
 .btn-primary {
     background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
+    color: white;
+    font-size: 18px;
     font-weight: bold;
+    border: 2px solid #007bff;
 }
 
 .btn-primary:hover {
@@ -187,152 +161,57 @@ footer {
     border-color: #0056b3;
 }
 
-/* Дополнительные стили для формы входа */
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #721c24;
+    border-color: #721c24;
+}
+
+/* Медиазапрос для адаптивности */
+@media screen and (max-width: 768px) {
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .btn-danger,
+    .btn-primary {
+        font-size: 16px;
+    }
+}
+
+/* Формы */
 .form-group {
     margin-bottom: 20px;
 }
 
-.form-check-label {
-    font-weight: normal;
-}
-
-/* Дополнительные стили для формы регистрации */
-form {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.form-control-label {
-    font-weight: bold;
-}
-
-/* Стили для Bootstrap Carousel */
-.carousel {
-    max-width: 75%;
-    margin-top: 20px;
-    margin: 0 auto;
-}
-
-.carousel-inner {
-    max-width: 100%;
-}
-
-.carousel-caption {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    color: #000;  /* Черный цвет для стрелок */
-    margin-right: -175px;
-    margin-left: -175px;
-}
-
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;  /* Белый цвет для стрелок при наведении */
-}
-
-
-
-/* Дополнения к стилям для cookie_banner.html */
-
-.cookie-banner {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 15px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.form-control {
     width: 100%;
-    z-index: 1000;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cookie-message {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.4;
-}
-
-.cookie-buttons {
-    display: flex;
-    gap: 10px;
-}
-
-/* Стили для кнопок в плашке */
-
-.btn-success,
-.btn-danger {
-    padding: 10px 20px;
+    padding: 10px;
+    border: 1px solid #ced4da;
     border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
-.btn-success:hover {
-    background-color: #218838;
-    border-color: #1e7e34;
+.form-check-label {
+    margin-left: -400px; /* Отступ слева от текста "Запомнить меня" */
 }
 
-.btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
-}
-
-/* Анимация появления и исчезновения */
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-}
-
-.cookie-banner {
-    animation: fadeIn 0.5s ease-out;
-}
-
-.cookie-banner.hidden {
-    animation: fadeOut 0.5s ease-out;
-    animation-fill-mode: forwards;
-}
-
-
-/* Стили для всплывающего окна */
+/* Модальные окна */
 .modal {
     display: none;
     position: fixed;
@@ -344,22 +223,375 @@ form {
 }
 
 .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
 }
 
 .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    float: right;
     cursor: pointer;
 }
 
-/* Дополнительные стили по вашему выбору */
+/* Дополнительные стили для креативности куки-баннера */
+.cookie-banner {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    animation: slideIn 0.5s ease-out;
+}
+
+.cookie-banner.hidden {
+    display: none;
+}
+
+.cookie-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cookie-message {
+    margin-bottom: 10px;
+}
+
+.cookie-message a {
+    color: #5bc0de;
+    text-decoration: underline;
+}
+
+.cookie-buttons button {
+    margin: 0 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cookie-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* Анимация для появления баннера */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* Футер */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Применение стилей для формы обратной связи */
+.contact-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-form label {
+    font-weight: bold;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-info {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-info h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Дополнительные стили для Dashboard */
+.dashboard-section {
+    background-color: #f8f9fa;
+    padding: 40px 0;
+}
+
+.dashboard-heading {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Стили для секции управления пользователями */
+.manage-users {
+    margin-bottom: 40px;
+}
+
+.stat-text {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Стили для карточек пользователя */
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.user h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.user p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Медиазапрос для адаптивности */
+@media screen and (max-width: 768px) {
+    .user {
+        width: calc(50% - 20px);
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+/* Стили для секции управления мероприятиями */
+.manage-events {
+    margin-bottom: 40px;
+}
+
+.section-heading {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.create-event-link {
+    margin-bottom: 20px;
+}
+
+
+/* Дополнительные стили для страницы пользователя */
+.user-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+.list-group-item {
+    font-size: 16px;
+    border: none;
+}
+
+.user-list, .event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.user, .event {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(33.33% - 20px);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.user h2, .event h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.user p, .event p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Стили для модальных окон */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+}
+
+/* Медиазапрос для адаптивности */
+@media screen and (max-width: 768px) {
+    .user, .event {
+        width: calc(50% - 20px);
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+}
+
+
+
+/* Стили для алерт-сообщений */
+.alert-messages {
+    margin-top: 20px;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.alert-info {
+    background-color: #007bff;
+    color: white;
+}
+
+.event-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.event {
+    flex: 0 0 calc(33.33% - 20px);
+    box-sizing: border-box;
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.event img {
+    max-width: 100%;
+    height: auto;
+}
+
+.event h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.event p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* Стили для страницы входа */
+.login-section {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+}
+
+/* Стили для ссылки на регистрацию */
+.mt-3 a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.mt-3 a:hover {
+    color: #0056b3;
+}
+
+/* Дополнительные стили для карусели */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Медиазапрос для адаптивности карусели на маленьких экранах */
+@media screen and (max-width: 768px) {
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        margin-top: -30px;
+    }
+}

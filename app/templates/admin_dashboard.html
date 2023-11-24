@@ -1,104 +1,107 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard - EventHub{% endblock %}
+{% block title %}Панель управления - EventHub{% endblock %}
 
 {% block content %}
-<section class="dashboard-section">
-    <h2>Управление мероприятиями</h2>
+    <section class="dashboard-section">
+        <h2 class="dashboard-heading">Добро пожаловать в панель управления, {{ current_user.username }}!</h2>
+        <!-- Секция управления мероприятиями -->
+        <div class="manage-events">
+            <h2 class="section-heading">Управление мероприятиями</h2>
 
-    <!-- Ссылка на страницу создания нового мероприятия -->
-    <div class="create-event-link">
-        <a href="{{ url_for('create_event') }}" class="btn btn-primary">Создать новое мероприятие</a>
-    </div>
-
-    <!-- Список всех мероприятий с возможностью редактирования и удаления -->
-    <div class="event-list">
-        {% for event in events %}
-                <div class="event">
-                    <img src="{{ url_for('static', filename='uploads/' + event.photo_filename) }}" alt="{{ event.title }}">
-                    <h2>{{ event.title }}</h2>
-                    <p>{{ event.description }}</p>
-                    <!-- Добавлена ссылка на редактирование мероприятия -->
-                    <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-info">Редактировать</a>
-                    <!-- Добавлена кнопка для открытия модального окна удаления -->
-                    <button class="btn btn-danger" onclick="openDeleteModal('{{ event.id }}', '{{ event.title }}')">Удалить</button>
-                </div>
-            {% endfor %}
-    </div>
-</section>
-<!-- Добавить раздел с пользователями -->
-<section class="dashboard-section">
-    <h2>Управление пользователями</h2>
-    
-    <!-- Количество пользователей и администраторов -->
-    <p>Всего пользователей: {{ total_users }}</p>
-    <p>Всего администраторов: {{ admin_count }}</p>
-
-    <!-- Список всех пользователей с возможностью удаления -->
-    <div class="user-list">
-        {% for user in users %}
-            <div class="user">
-                <h2>{{ user.username }}</h2>
-                <p>{{ user.email }}</p>
-                <button class="btn btn-danger" onclick="openDeleteUserModal('{{ user.id }}', '{{ user.username }}')">Удалить</button>
+            <!-- Ссылка на страницу создания нового мероприятия -->
+            <div class="create-event-link">
+                <a href="{{ url_for('create_event') }}" class="btn btn-primary">Создать новое мероприятие</a>
             </div>
-        {% endfor %}
+
+            <!-- Список всех мероприятий с возможностью редактирования и удаления -->
+            <div class="event-list">
+                {% for event in events %}
+                    <div class="event">
+                        <img src="{{ url_for('static', filename='uploads/' + event.photo_filename) }}" alt="{{ event.title }}">
+                        <h2>{{ event.title }}</h2>
+                        <p>{{ event.description }}</p>
+                        <!-- Добавлена ссылка на редактирование мероприятия -->
+                        <a href="{{ url_for('edit_event', event_id=event.id) }}" class="btn btn-info">Редактировать</a>
+                        <!-- Добавлена кнопка для открытия модального окна удаления -->
+                        <button class="btn btn-danger" onclick="openDeleteModal('{{ event.id }}', '{{ event.title }}')">Удалить</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Секция управления пользователями -->
+        <div class="manage-users">
+            <h2 class="section-heading">Управление пользователями</h2>
+
+            <!-- Количество пользователей и администраторов -->
+            <p class="stat-text">Всего пользователей: {{ total_users }}</p>
+            <p class="stat-text">Всего администраторов: {{ admin_count }}</p>
+
+            <!-- Список всех пользователей с возможностью удаления -->
+            <div class="user-list">
+                {% for user in users %}
+                    <div class="user">
+                        <h2>{{ user.username }}</h2>
+                        <p>{{ user.email }}</p>
+                        <button class="btn btn-danger" onclick="openDeleteUserModal('{{ user.id }}', '{{ user.username }}')">Удалить</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно удаления пользователя -->
+    <div class="modal" id="deleteUserModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteUserModal()">&times;</span>
+            <div class="modal-body" id="deleteUserModalBody"></div>
+        </div>
     </div>
-</section>
 
-<!-- Модальное окно удаления пользователя -->
-<div class="modal" id="deleteUserModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeDeleteUserModal()">&times;</span>
-        <div class="modal-body" id="deleteUserModalBody"></div>
+    <script>
+        // JavaScript функции для открытия и закрытия модального окна удаления пользователя
+        function openDeleteUserModal(userId, username) {
+            var modalBody = document.getElementById('deleteUserModalBody');
+            modalBody.innerHTML = `
+                <form action="{{ url_for('delete_user') }}" method="post">
+                    <p>Вы уверены, что хотите удалить пользователя "${username}"?</p>
+                    <input type="hidden" name="user_id" value="${userId}">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            `;
+            document.getElementById('deleteUserModal').style.display = 'block';
+        }
+
+        function closeDeleteUserModal() {
+            document.getElementById('deleteUserModal').style.display = 'none';
+        }
+    </script>
+
+    <!-- Модальное окно удаления -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeDeleteModal()">&times;</span>
+            <div class="modal-body" id="deleteModalBody"></div>
+        </div>
     </div>
-</div>
 
-<script>
-    // JavaScript функции для открытия и закрытия модального окна удаления пользователя
-    function openDeleteUserModal(userId, username) {
-        var modalBody = document.getElementById('deleteUserModalBody');
-        modalBody.innerHTML = `
-            <form action="{{ url_for('delete_user') }}" method="post">
-                <p>Вы уверены, что хотите удалить пользователя "${username}"?</p>
-                <input type="hidden" name="user_id" value="${userId}">
-                <button type="submit" class="btn btn-danger">Удалить</button>
-            </form>
-        `;
-        document.getElementById('deleteUserModal').style.display = 'block';
-    }
+    <script>
+        // JavaScript функции для открытия и закрытия модального окна удаления
+        function openDeleteModal(eventId, eventTitle) {
+            var modalBody = document.getElementById('deleteModalBody');
+            modalBody.innerHTML = `
+                <form action="{{ url_for('delete_event') }}" method="post">
+                    <p>Вы уверены, что хотите удалить мероприятие "${eventTitle}"?</p>
+                    <input type="hidden" name="event_id" value="${eventId}">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            `;
+            document.getElementById('deleteModal').style.display = 'block';
+        }
 
-    function closeDeleteUserModal() {
-        document.getElementById('deleteUserModal').style.display = 'none';
-    }
-</script>
-
-
-<!-- Модальное окно удаления -->
-<div class="modal" id="deleteModal">
-    <div class="modal-content">
-        <span class="close" onclick="closeDeleteModal()">&times;</span>
-        <div class="modal-body" id="deleteModalBody"></div>
-    </div>
-</div>
-
-<script>
-    // JavaScript функции для открытия и закрытия модального окна удаления
-    function openDeleteModal(eventId, eventTitle) {
-        var modalBody = document.getElementById('deleteModalBody');
-        modalBody.innerHTML = `
-            <form action="{{ url_for('delete_event') }}" method="post">
-                <p>Вы уверены, что хотите удалить мероприятие "${eventTitle}"?</p>
-                <input type="hidden" name="event_id" value="${eventId}">
-                <button type="submit" class="btn btn-danger">Удалить</button>
-            </form>
-        `;
-        document.getElementById('deleteModal').style.display = 'block';
-    }
-
-    function closeDeleteModal() {
-        document.getElementById('deleteModal').style.display = 'none';
-    }
-</script>
-
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').style.display = 'none';
+        }
+    </script>
 {% endblock %}
