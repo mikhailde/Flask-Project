@@ -2,6 +2,8 @@
 venv/
 
 # Compiled Python files
+*.pyc
+*.pyo
 __pycache__/
 
 # Instance folder (used for storing instance-specific configuration)
@@ -17,7 +19,8 @@ migrations/
 .idea/
 .vscode/
 
-# Compiled Python files should not be checked into version control
-*.pyc
-*.pyo
-__pycache__/
+# Environment variables file
+.env
+
+# Static upload files
+static/uploads/
