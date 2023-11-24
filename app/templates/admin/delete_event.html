@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Удаление мероприятия{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Удаление мероприятия</h2>
+            <p>Вы уверены, что хотите удалить мероприятие "{{ event.title }}"?</p>
+            
+            <div class="d-flex justify-content-center">
+                <form action="{{ url_for('delete_event', event_id=event.id) }}" method="post">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
