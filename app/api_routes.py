@@ -1,9 +1,8 @@
 from flask import request
-from flask_restful import Resource, Api
+from flask_restful import Resource
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models import Event
-
-api = Api()
+from app import api
 
 class EventApi(Resource):
     @jwt_required()
