@@ -7,8 +7,6 @@ import pytest
 from app.models import User, Event
 from datetime import datetime
 
-
-
 @pytest.fixture
 def sample_user():
     user = User(username='testuser', email='testuser@example.com')
